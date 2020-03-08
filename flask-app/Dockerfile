@@ -1,10 +1,20 @@
-FROM ubuntu:16.04
+# Using official python runtime base image
+FROM python:3-alpine
 
-RUN apt-get update -y && \
-   apt-get install -y python-pip python-dev
-COPY ./requirements.txt /app/requirements.txt
-WORKDIR /app
+# Set the application directory
+WORKDIR /src
+
+RUN pip install --upgrade pip
+
+# Install our requirements.txt
+ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-COPY . /app
-ENTRYPOINT [ "python" ]
-CMD [ "app.py" ]
+
+# Copy our code from the current folder to /app inside the container
+ADD . /src
+
+# Make port 8080 available for links and/or publish
+EXPOSE 8080
+
+# Define our command to be run when launching the container
+CMD ["python", "app.py"]
