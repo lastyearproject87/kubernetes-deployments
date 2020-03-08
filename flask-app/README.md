@@ -12,6 +12,6 @@ problem statement:-
         No more CPU cycles wasted in your machine. Hardware and network just limited by the power of the cloud
 
 
-
+https://github.com/okteto/python-getting-started
 
 https://okteto.com/docs/samples/python/index.html
